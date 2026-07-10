@@ -1,0 +1,12 @@
+{
+  "name": "local-rag-student-assistant",
+  "version": "1.0.0",
+  "description": "Local RAG student assistant developed as part of the Microsoft AI Innovators Summer Internship Program.",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
