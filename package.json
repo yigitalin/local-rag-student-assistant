@@ -2,11 +2,17 @@
   "name": "local-rag-student-assistant",
   "version": "1.0.0",
   "description": "Local RAG student assistant developed as part of the Microsoft AI Innovators Summer Internship Program.",
-  "license": "ISC",
-  "author": "",
   "type": "module",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  }
+    "ingest": "node src/ingest.js",
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.7.0",
+    "express": "^4.21.0",
+    "foundry-local-sdk": "^0.9.0"
+  },
+  "license": "MIT"
 }
