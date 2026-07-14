@@ -113,7 +113,14 @@ export class VectorStore {
     const scored = [];
     for (const idx of candidateIndices) {
       const row = this._rowCache[idx];
-      const score = cosineSimilarity(queryTf, row.tf);
+      const contentScore = cosineSimilarity(queryTf, row.tf);
+      // Give additional importance to document title and category.
+      // This helps domain-specific terms such as "ÇAP", "Erasmus" and "Yatay Geçiş".
+      const metadataTf = termFrequency(`${row.title} ${row.category}`);
+      const metadataScore = cosineSimilarity(queryTf, metadataTf);
+
+      const score = (contentScore * 0.7) + (metadataScore * 0.3);
+
       if (score > 0) {
         scored.push({ ...row, score, tf_json: undefined });
       }

@@ -14,7 +14,7 @@ export const config = {
   dbPath: path.join(ROOT, "data", "rag.db"),
   chunkSize: 200,       // tokens (approx) – kept small for NPU compatibility
   chunkOverlap: 25,     // tokens overlap between chunks
-  topK: 3,              // number of chunks to retrieve – limited for NPU context window
+  topK: 2,              // number of chunks to retrieve – limited for NPU context window
 
   // Server
   port: 3000,
