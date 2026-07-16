@@ -6,36 +6,65 @@ id: DOC-INT-002
 
 # Staj Başvuru Süreci
 
-## Genel Bilgiler
+## Amaç
 
-Zorunlu staja başlamadan önce öğrencilerin başvuru sürecini eksiksiz tamamlaması ve Bölüm Staj Komisyonundan onay alması zorunludur.
+Bu belge, zorunlu staj başvuru sürecinde öğrencinin izlemesi gereken resmi adımları açıklar.
 
-Bölüm Staj Komisyonu tarafından onaylanmayan başvurular geçerli kabul edilmez ve öğrenci staja başlayamaz.
+---
+
+## Başvuru Şartları
+
+- Öğrenci, staja başlamadan önce başvuru sürecini tamamlamalıdır.
+- Bölüm Staj Komisyonunun onayı alınmadan staja başlanamaz.
+
+---
 
 ## Başvuru Adımları
 
-1. Öğrenci, staj yapacağı kurumu belirler.
-2. Staj Başvuru Formu eksiksiz olarak doldurulur.
-3. Başvuru formu staj yapılacak kurum tarafından onaylanır.
-4. Başvuru formu ilan edilen tarihler içerisinde Bölüm Başkanlığına teslim edilir.
+1. Öğrenci staj yapacağı kurumu belirler.
+2. Staj Başvuru Formunu eksiksiz doldurur.
+3. Başvuru Formu staj yapılacak kurum tarafından onaylanır.
+4. Başvuru belgeleri ilan edilen tarihler içerisinde Bölüm Başkanlığına teslim edilir.
 5. Bölüm Staj Komisyonu başvuruyu inceler ve değerlendirir.
 6. Başvurusu uygun bulunan öğrenciler sigorta işlemleri için gerekli süreci tamamlar.
 7. Tüm onay işlemleri tamamlandıktan sonra öğrenci stajına başlayabilir.
 
+---
+
 ## Başvurunun Değerlendirilmesi
 
-Başvurular Bölüm Staj Komisyonu tarafından değerlendirilir.
+- Başvurular Bölüm Staj Komisyonu tarafından değerlendirilir.
+- Komisyon, staj yapılacak kurumun yönergede belirtilen koşulları sağlayıp sağlamadığını inceler.
+- Başvuru uygun bulunursa onaylanır.
+- Başvuru uygun bulunmazsa reddedilir.
+- Gerekli görülen durumlarda öğrenciden ek bilgi veya belge istenebilir.
 
-Komisyon, staj yapılacak kurumun yönergede belirtilen koşulları sağlayıp sağlamadığını inceler ve başvuruyu onaylar veya reddeder.
+---
 
-Gerekli görülen durumlarda öğrenciden ek bilgi veya belge talep edilebilir.
-
-## Önemli Notlar
+## Önemli Kurallar
 
 - Son başvuru tarihinden sonra yapılan başvurular normal şartlarda kabul edilmez.
-- Üniversitenin ve Bölüm Staj Komisyonunun onayı alınmadan staja başlanmamalıdır.
+- Bölüm Staj Komisyonunun onayı alınmadan staja başlanamaz.
 - Eksik veya hatalı başvurular değerlendirme sürecini geciktirebilir.
-- Başvuru sürecinde kullanılan tüm bilgi ve belgelerin doğru ve eksiksiz olması öğrencinin sorumluluğundadır.
+- Başvuru sürecinde kullanılan bilgi ve belgelerin doğru ve eksiksiz olması öğrencinin sorumluluğundadır.
+
+---
+
+## Sık Sorulan Bilgiler
+
+**Staja ne zaman başlanabilir?**
+
+- Tüm başvuru ve onay işlemleri tamamlandıktan sonra staja başlanabilir.
+
+**Başvuruyu kim değerlendirir?**
+
+- Başvurular Bölüm Staj Komisyonu tarafından değerlendirilir.
+
+**Ek belge istenebilir mi?**
+
+- Evet. Gerekli görülen durumlarda öğrenciden ek bilgi veya belge talep edilebilir.
+
+---
 
 ## Reference
 

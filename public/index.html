@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Okan Üniversitesi Mühendislik Fakültesi Öğrenci Asistanı</title>
+  <title>Okan Üniversitesi Mühendislik Fakültesi Staj Asistanı</title>
   <style>
     /* ── Base: high-contrast, large text for field use ── */
     *, *::before, *::after { box-sizing: border-box; }
@@ -392,7 +392,7 @@
       header h1 { font-size: 0.95rem; gap: 6px; }
       header h1 .icon { font-size: 1.2rem; }
       header h1 .title-text { display: none; }
-      header h1::after { content: "Okan Öğrenci Asistanı"; font-size: 0.95rem; }
+      header h1::after { content: "Okan Staj Asistanı"; font-size: 0.95rem; }
       .controls { gap: 8px; }
       .toggle-label { font-size: 0.7rem; }
       .status { font-size: 0.7rem; padding: 3px 8px; }
@@ -423,7 +423,7 @@
     }
     @media (max-width: 340px) {
       html { font-size: 15px; }
-      header h1::after { content: "Okan Asistan"; font-size: 0.9rem; }
+      header h1::after { content: "Staj Asistan"; font-size: 0.9rem; }
       .quick-btn { padding: 6px 10px; font-size: 0.72rem; }
       #send-btn { min-width: 56px; padding: 10px 12px; }
     }
@@ -434,7 +434,7 @@
 <header>
   <h1>
     <span class="icon">🎓</span>
-    <span class="title-text">Okan Üniversitesi Mühendislik Fakültesi Öğrenci Asistanı</span>
+    <span class="title-text">Okan Üniversitesi Mühendislik Fakültesi Staj Asistanı</span>
   </h1>
   <div class="controls">
     <label class="toggle-label">
@@ -447,14 +447,13 @@
 
 <div id="quick-actions">
   <button class="quick-btn" data-q="Zorunlu staj kaç iş günüdür?">💼 Zorunlu Staj</button>
-  <button class="quick-btn" data-q="Erasmus başvuru şartları nelerdir?">🌍 Erasmus</button>
-  <button class="quick-btn" data-q="ÇAP başvuru şartları nelerdir?">🎓 ÇAP</button>
-  <button class="quick-btn" data-q="Yandal programına nasıl başvurabilirim?">📘 Yandal</button>
-  <button class="quick-btn" data-q="Başarı bursu şartları nelerdir?">💳 Burslar</button>
-  <button class="quick-btn" data-q="Mezuniyet koşulları nelerdir?">🎉 Mezuniyet</button>
-  <button class="quick-btn" data-q="Yatay geçiş için hangi belgeler gereklidir?">🔄 Yatay Geçiş</button>
-  <button class="quick-btn" data-q="Güz yarıyılı dersleri ne zaman başlıyor?">📅 Akademik Takvim</button>
-  <button class="quick-btn" data-q="Kampüste hangi olanaklar bulunmaktadır?">🏫 Kampüs Yaşamı</button>
+  <button class="quick-btn" data-q="Staj başvurusu nasıl yapılır?">📝 Staj Başvurusu</button>
+  <button class="quick-btn" data-q="Staj sigortasını kim karşılar?">🛡️ Staj Sigortası</button>
+  <button class="quick-btn" data-q="Staj raporu nasıl hazırlanır?">📄 Staj Raporu</button>
+  <button class="quick-btn" data-q="Staj sırasında uyulması gereken kurallar nelerdir?">📋 Staj Kuralları</button>
+  <button class="quick-btn" data-q="Staja başlamadan önce hangi işlemler tamamlanmalıdır?">📅 Staja Başlama</button>
+  <button class="quick-btn" data-q="Staj nasıl değerlendirilir?">✅ Staj Değerlendirmesi</button>
+  <button class="quick-btn" data-q="Gönüllü staj yapılabilir mi?">❓ Gönüllü Staj</button>
 </div>
 
 <div id="chat">
@@ -466,10 +465,10 @@
 </div>
 
 <div id="input-area">
-  <button id="upload-btn" title="Bilgi tabanına belge yükle">📄</button>
+  <button id="upload-btn" title="Staj bilgi tabanına belge yükle">📄</button>
   <textarea
     id="user-input"
-    placeholder="Üniversite süreçleri hakkında bir soru sorun..."
+    placeholder="Staj süreçleri hakkında bir soru sorun..."
     rows="1"
     autofocus
   ></textarea>
@@ -687,18 +686,18 @@
         // Always restore the welcome message when ready
         const welcomeMsgReady = chat.querySelector('.message.agent');
         if (welcomeMsgReady) {
-          welcomeMsgReady.innerHTML = `<strong>Okan Üniversitesi Mühendislik Fakültesi Öğrenci Asistanı 🟢 Hazır</strong><br>` +
+          welcomeMsgReady.innerHTML = `<strong>Okan Üniversitesi Mühendislik Fakültesi Staj Asistanı 🟢 Hazır</strong><br>` +
             `Bu uygulama tamamen yerel olarak çalışır. İnternet bağlantısı gerektirmez.<br><br>` +
             `Şunlar hakkında soru sorabilirsiniz:<ul>` +
-            `<li>Zorunlu Staj</li>` +
-            `<li>Erasmus Programı</li>` +
-            `<li>ÇAP ve Yandal</li>` +
-            `<li>Burslar ve İndirimler</li>` +
-            `<li>Mezuniyet İşlemleri</li>` +
-            `<li>Yatay Geçiş</li>` +
-            `<li>Akademik Takvim</li>` +
-            `<li>Kampüs Yaşamı</li></ul>` +
-            `<em style="color:var(--warning);">📚 Yanıtlar yalnızca yerel bilgi tabanındaki resmî üniversite belgelerine dayanmaktadır.</em>`;
+            `<li>Zorunlu staj süresi</li>` +
+            `<li>Staj başvuru süreci</li>` +
+            `<li>Staj sigortası</li>` +
+            `<li>Staj raporu</li>` +
+            `<li>Staj kuralları</li>` +
+            `<li>Staja başlamadan önce yapılması gerekenler</li>` +
+            `<li>Staj değerlendirme süreci</li>` +
+            `<li>Gönüllü staj</li></ul>` +
+            `<em style="color:var(--warning);">📚 Yanıtlar yalnızca yerel bilgi tabanındaki resmî staj belgelerine dayanmaktadır.</em>`;
           delete welcomeMsgReady.dataset.replaced;
         }
         break;
@@ -903,7 +902,7 @@
         srcDiv.className = 'sources';
         const details = document.createElement('details');
         const summary = document.createElement('summary');
-        summary.textContent = `📚 Sources (${sources.length})`;
+        summary.textContent = `📚 Kaynaklar (${sources.length})`;
         details.appendChild(summary);
         for (const s of sources) {
           const item = document.createElement('div');
