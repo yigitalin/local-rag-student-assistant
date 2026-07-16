@@ -1,5 +1,5 @@
 /**
- * Express server – Okan Engineering Faculty Internship RAG Application.
+ * Express server – Gas Field RAG Application.
  * Serves the web UI and provides the /api/chat endpoint.
  * Fully offline, connects to Foundry Local on dynamic port.
  */
@@ -204,7 +204,7 @@ app.get("*", (_req, res) => {
 
 // ── Start server ──
 async function start() {
-  console.log("=== Okan Engineering Faculty Internship Assistant ===\n");
+  console.log("=== Gas Field RAG – Local Support Agent ===\n");
 
   // Register status callback to relay progress to connected UI clients
   engine.onStatus((status) => broadcastStatus(status));

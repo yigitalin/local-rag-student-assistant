@@ -46,43 +46,14 @@ export function chunkText(text, maxTokens = 400, overlapTokens = 50) {
  */
 export function termFrequency(text) {
   const tf = new Map();
-
-  const stopWords = new Set([
-    "ve",
-    "veya",
-    "ile",
-    "için",
-    "bir",
-    "bu",
-    "şu",
-    "o",
-    "da",
-    "de",
-    "mi",
-    "mı",
-    "mu",
-    "mü",
-    "var",
-    "olan",
-    "olarak",
-    "gibi",
-    "daha",
-    "ise",
-    "en",
-    "çok",
-  ]);
-
   const tokens = text
-    .toLocaleLowerCase("tr-TR")
-    .normalize("NFC")
-    .replace(/[^\p{L}\p{N}₂\-']/gu, " ")
+    .toLowerCase()
+    .replace(/[^a-z0-9₂\-']/g, " ")
     .split(/\s+/)
-    .filter((token) => token.length > 1 && !stopWords.has(token));
-
-  for (const token of tokens) {
-    tf.set(token, (tf.get(token) || 0) + 1);
+    .filter((t) => t.length > 1);
+  for (const t of tokens) {
+    tf.set(t, (tf.get(t) || 0) + 1);
   }
-
   return tf;
 }
 

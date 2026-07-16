@@ -9,13 +9,12 @@ export const config = {
   // Model
   model: "phi-3.5-mini",
 
-  // Local RAG knowledge base
+  // RAG
   docsDir: path.join(ROOT, "docs"),
   dbPath: path.join(ROOT, "data", "rag.db"),
-  chunkSize: 200,      // Approximate chunk size for internship documents
-  chunkOverlap: 25,    // Overlap between consecutive chunks
-  topK: 2,             // Number of document chunks retrieved per query
-  minSimilarityScore: 0.35, // Minimum score required to answer a question
+  chunkSize: 200,       // tokens (approx) – kept small for NPU compatibility
+  chunkOverlap: 25,     // tokens overlap between chunks
+  topK: 3,              // number of chunks to retrieve – limited for NPU context window
 
   // Server
   port: 3000,

@@ -10,20 +10,6 @@ import { VectorStore } from "./vectorStore.js";
 import { config } from "./config.js";
 import { SYSTEM_PROMPT, SYSTEM_PROMPT_COMPACT } from "./prompts.js";
 
-const KNOWLEDGE_NOT_FOUND_MESSAGE =
-  `Bu bilgi yerel staj bilgi tabanında bulunmamaktadır.
-
-Güncel ve resmî bilgi için İstanbul Okan Üniversitesi web sitesini inceleyebilir veya Bölüm Staj Komisyonuyla iletişime geçebilirsiniz:
-
-https://www.okan.edu.tr/`;
-
-function hasRelevantContext(chunks) {
-  return (
-    chunks.length > 0 &&
-    chunks[0].score >= config.minSimilarityScore
-  );
-}
-
 export class ChatEngine {
   constructor() {
     this.chatClient = null;
@@ -54,9 +40,7 @@ export class ChatEngine {
     this._emitStatus("init", "Initializing Foundry Local SDK...");
 
     // Create the manager (requires appName)
-    const manager = FoundryLocalManager.create({
-      appName: "gas-field-local-rag",
-    });
+    const manager = FoundryLocalManager.create({ appName: "gas-field-local-rag" });
     const catalog = manager.catalog;
 
     this._emitStatus("catalog", "Discovering available models...");
@@ -84,7 +68,7 @@ export class ChatEngine {
 
     // Create the native chat client with performance settings pre-configured
     this.chatClient = this.model.createChatClient();
-    this.chatClient.settings.temperature = 0.1; // Low for deterministic, factual responses
+    this.chatClient.settings.temperature = 0.1; // Low for deterministic, safety-critical responses
     this._emitStatus("ready", `Model ready: ${this.modelAlias}`);
 
     // Open the local vector store
@@ -123,7 +107,7 @@ export class ChatEngine {
    */
   _buildContext(chunks) {
     if (chunks.length === 0) {
-      return "Yerel staj bilgi tabanında ilgili belge bulunamadı.";
+      return "No relevant documents found in local knowledge base.";
     }
 
     return chunks
@@ -140,22 +124,7 @@ export class ChatEngine {
   async query(userMessage, history = []) {
     // 1. Retrieve relevant chunks
     const chunks = this.retrieve(userMessage);
-    console.log("Retrieved Chunks:");
-    console.table(
-      chunks.map(c => ({
-        title: c.title,
-        score: c.score.toFixed(3),
-        preview: c.content.substring(0, 120)
-      }))
-    );
     const context = this._buildContext(chunks);
-
-    if (!hasRelevantContext(chunks)) {
-      return {
-        text: KNOWLEDGE_NOT_FOUND_MESSAGE,
-        sources: [],
-      };
-    }
 
     // 2. Build messages array
     const systemPrompt = this.compactMode ? SYSTEM_PROMPT_COMPACT : SYSTEM_PROMPT;
@@ -163,7 +132,7 @@ export class ChatEngine {
       { role: "system", content: systemPrompt },
       {
         role: "system",
-        content: `Retrieved context from the local internship knowledge base:\n\n${context}`,
+        content: `Retrieved context from local knowledge base:\n\n${context}`,
       },
       ...history,
       { role: "user", content: userMessage },
@@ -191,29 +160,7 @@ export class ChatEngine {
   async *queryStream(userMessage, history = []) {
     // 1. Retrieve relevant chunks
     const chunks = this.retrieve(userMessage);
-    console.log("Retrieved Chunks:");
-    console.table(
-      chunks.map(c => ({
-        title: c.title,
-        score: c.score.toFixed(3),
-        preview: c.content.substring(0, 120)
-      }))
-    );
     const context = this._buildContext(chunks);
-    
-    if (!hasRelevantContext(chunks)) {
-      yield {
-        type: "sources",
-        data: [],
-      };
-
-      yield {
-        type: "text",
-        data: KNOWLEDGE_NOT_FOUND_MESSAGE,
-      };
-
-      return;
-    }
 
     // 2. Build messages array
     const systemPrompt = this.compactMode ? SYSTEM_PROMPT_COMPACT : SYSTEM_PROMPT;
@@ -221,7 +168,7 @@ export class ChatEngine {
       { role: "system", content: systemPrompt },
       {
         role: "system",
-        content: `Retrieved context from the local internship knowledge base:\n\n${context}`,
+        content: `Retrieved context from local knowledge base:\n\n${context}`,
       },
       ...history,
       { role: "user", content: userMessage },
