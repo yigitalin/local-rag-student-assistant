@@ -89,3 +89,14 @@ For every Markdown document:
 # Goal
 
 The final project should be recognized as an adaptation of the Microsoft Local RAG reference implementation rather than a redesigned application.
+
+## File Naming
+
+Markdown filenames should be adapted to reflect the Oil Refinery domain while preserving the original numbering sequence.
+
+Example:
+
+01-gas-leak-detection.md
+↓
+
+01-hydrocarbon-leak-detection.md
