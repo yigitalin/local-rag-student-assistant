@@ -100,3 +100,9 @@ Example:
 ↓
 
 01-hydrocarbon-leak-detection.md
+
+## Technical Equipment Naming
+
+Do not rename technical equipment unless the equipment is domain-specific.
+
+Generic industrial equipment such as pressure regulators, pumps, valves, filters, compressors, pressure gauges, and heat exchangers should retain their original names if they are commonly used in oil refineries.
