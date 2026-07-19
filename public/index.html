@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Okan Üniversitesi Mühendislik Fakültesi Staj Asistanı</title>
+  <title>Oil Refinery Support Agent</title>
   <style>
     /* ── Base: high-contrast, large text for field use ── */
     *, *::before, *::after { box-sizing: border-box; }
@@ -392,7 +392,7 @@
       header h1 { font-size: 0.95rem; gap: 6px; }
       header h1 .icon { font-size: 1.2rem; }
       header h1 .title-text { display: none; }
-      header h1::after { content: "Okan Staj Asistanı"; font-size: 0.95rem; }
+      header h1::after { content: "Refinery Support"; font-size: 0.95rem; }
       .controls { gap: 8px; }
       .toggle-label { font-size: 0.7rem; }
       .status { font-size: 0.7rem; padding: 3px 8px; }
@@ -423,7 +423,7 @@
     }
     @media (max-width: 340px) {
       html { font-size: 15px; }
-      header h1::after { content: "Staj Asistan"; font-size: 0.9rem; }
+      header h1::after { content: "Refinery"; font-size: 0.9rem; }
       .quick-btn { padding: 6px 10px; font-size: 0.72rem; }
       #send-btn { min-width: 56px; padding: 10px 12px; }
     }
@@ -433,67 +433,74 @@
 
 <header>
   <h1>
-    <span class="icon">🎓</span>
-    <span class="title-text">Okan Üniversitesi Mühendislik Fakültesi Staj Asistanı</span>
+    <span class="icon">🔧</span>
+    <span class="title-text">Oil Refinery Support Agent</span>
   </h1>
   <div class="controls">
     <label class="toggle-label">
       <input type="checkbox" id="compact-mode">
-      Hızlı Mod
+      Edge Mode
     </label>
-    <span class="status loading" id="status">Bağlanıyor...</span>
+    <span class="status loading" id="status">Connecting...</span>
   </div>
 </header>
 
 <div id="quick-actions">
-  <button class="quick-btn" data-q="Zorunlu staj kaç iş günüdür?">💼 Zorunlu Staj</button>
-  <button class="quick-btn" data-q="Staj başvurusu nasıl yapılır?">📝 Staj Başvurusu</button>
-  <button class="quick-btn" data-q="Staj sigortasını kim karşılar?">🛡️ Staj Sigortası</button>
-  <button class="quick-btn" data-q="Staj raporu nasıl hazırlanır?">📄 Staj Raporu</button>
-  <button class="quick-btn" data-q="Staj sırasında uyulması gereken kurallar nelerdir?">📋 Staj Kuralları</button>
-  <button class="quick-btn" data-q="Staja başlamadan önce hangi işlemler tamamlanmalıdır?">📅 Staja Başlama</button>
-  <button class="quick-btn" data-q="Staj nasıl değerlendirilir?">✅ Staj Değerlendirmesi</button>
-  <button class="quick-btn" data-q="Gönüllü staj yapılabilir mi?">❓ Gönüllü Staj</button>
+  <button class="quick-btn" data-q="What should I check if a centrifugal pump has low discharge pressure?">⚠️ Low Pump Pressure</button>
+
+  <button class="quick-btn" data-q="What are the steps for centrifugal pump inspection?">🔧 Pump Inspection</button>
+
+  <button class="quick-btn" data-q="What should I do if a pump mechanical seal is leaking?">💧 Seal Leakage</button>
+
+  <button class="quick-btn" data-q="What is the emergency shutdown procedure?">🚨 Emergency Shutdown</button>
+
+  <button class="quick-btn" data-q="What PPE is required for oil refinery maintenance work?">🦺 PPE Requirements</button>
+
+  <button class="quick-btn" data-q="What checks should be completed before starting refinery equipment?">📋 Pre-Start Inspection</button>
+
+  <button class="quick-btn" data-q="What is the procedure for pressure testing refinery equipment?">📐 Pressure Testing</button>
+
+  <button class="quick-btn" data-q="What is the confined space entry procedure?">⛑️ Confined Space</button>
 </div>
 
 <div id="chat">
   <div class="message agent">
-    <strong>⏳ Başlatılıyor...</strong><br>
-    Yerel yapay zekâ modeli hazırlanıyor. İlk çalıştırmada bu işlem biraz sürebilir.<br><br>
-    <em class="init-hint">Model yüklendiğinde sohbet kullanıma açılacaktır.</em>
+    <strong>⏳ Initializing...</strong><br>
+    Starting the AI model. This may take a moment on first run.<br><br>
+    <em class="init-hint">The chat will be available once the model is loaded.</em>
   </div>
 </div>
 
 <div id="input-area">
-  <button id="upload-btn" title="Staj bilgi tabanına belge yükle">📄</button>
+  <button id="upload-btn" title="Upload document to knowledge base">📄</button>
   <textarea
     id="user-input"
-    placeholder="Staj süreçleri hakkında bir soru sorun..."
+    placeholder="Describe the issue or ask a question..."
     rows="1"
     autofocus
   ></textarea>
-  <button id="send-btn">Gönder</button>
+  <button id="send-btn">Send</button>
 </div>
 
 <!-- Upload Modal -->
 <div class="modal-overlay" id="upload-modal">
   <div class="modal">
     <button class="modal-close" id="upload-close">&times;</button>
-    <h2>📄 Belge Yükle</h2>
+    <h2>📄 Upload Document</h2>
     <p class="upload-description">
-      Yerel bilgi tabanına <strong>.md</strong> veya <strong>.txt</strong> formatında bir belge ekleyin.
-      Belge parçalara ayrılarak hemen indekslenecektir.
+      Add a <strong>.md</strong> or <strong>.txt</strong> file to the local knowledge base.
+      It will be chunked and indexed immediately.
     </p>
     <div class="drop-zone" id="drop-zone">
       <span class="drop-icon">📁</span>
-      <span>Dosyayı buraya bırakın veya <u>seçmek için tıklayın</u></span>
+      <span>Drop file here or <u>click to browse</u></span>
       <input type="file" id="file-input" accept=".md,.txt">
     </div>
     <div class="upload-status" id="upload-status"></div>
     <div class="doc-list" id="doc-list">
       <details>
-        <summary>📚 İndekslenen Belgeler</summary>
-        <div id="doc-list-items">Yükleniyor…</div>
+        <summary>📚 Indexed Documents</summary>
+        <div id="doc-list-items">Loading…</div>
       </details>
     </div>
   </div>
@@ -545,15 +552,15 @@
   async function handleFileUpload(file) {
     const name = file.name;
     if (!name.endsWith('.md') && !name.endsWith('.txt')) {
-      showUploadStatus('error', 'Yalnızca .md ve .txt dosyaları kabul edilir.');
+      showUploadStatus('error', 'Only .md and .txt files are accepted.');
       return;
     }
     if (file.size > 2 * 1024 * 1024) {
-      showUploadStatus('error', 'Dosya çok büyük. En fazla 2 MB olabilir.');
+      showUploadStatus('error', 'File too large (max 2 MB).');
       return;
     }
 
-    showUploadStatus('loading', 'Yükleniyor ve indeksleniyor…');
+    showUploadStatus('loading', 'Uploading and indexing…');
 
     try {
       const text = await file.text();
@@ -564,16 +571,16 @@
       });
       const data = await res.json();
       if (!res.ok) {
-        showUploadStatus('error', data.error || 'Yükleme başarısız oldu.');
+        showUploadStatus('error', data.error || 'Upload failed.');
         return;
       }
       showUploadStatus('success',
-        `✓ ${data.filename} indekslendi: ${data.chunks} parça. Toplam: ${data.totalChunks} parça.`)
+        `✓ ${data.filename} indexed: ${data.chunks} chunk(s). Total: ${data.totalChunks} chunks.`);
       loadDocList();
       // Notify in chat
-      addMessage('agent', `📄 **Belge yüklendi:** ${data.title} [${data.category}]\nYerel bilgi tabanına ${data.chunks} parça eklendi.`);
+      addMessage('agent', `📄 **Document uploaded:** ${data.title} [${data.category}]\n${data.chunks} chunk(s) added to local knowledge base.`);
     } catch (err) {
-      showUploadStatus('error', 'Yükleme başarısız oldu. Sunucunun çalıştığından emin olun.');
+      showUploadStatus('error', 'Upload failed. Is the server running?');
     }
     // Reset file input
     fileInput.value = '';
@@ -597,16 +604,16 @@
           titleSpan.textContent = `${d.title} [${d.category}]`;
           const chunkSpan = document.createElement('span');
           chunkSpan.className = 'doc-chunks';
-          chunkSpan.textContent = `${d.chunks} parça`;
+          chunkSpan.textContent = `${d.chunks} chunks`;
           item.appendChild(titleSpan);
           item.appendChild(chunkSpan);
           docListItems.appendChild(item);
         }
       } else {
-        docListItems.textContent = 'İndekslenmiş belge bulunmuyor.';
+        docListItems.textContent = 'No documents indexed.';
       }
     } catch {
-      docListItems.textContent = 'Belge listesi yüklenemedi.';
+      docListItems.textContent = 'Could not load document list.';
     }
   }
 
@@ -631,13 +638,13 @@
         evtSource.close();
         // Retry after a short delay if not ready yet
         if (!modelReady) {
-          statusEl.textContent = 'Bağlanıyor...';
+          statusEl.textContent = 'Connecting...';
           statusEl.className = 'status loading';
           setTimeout(connectStatus, 2000);
         }
       };
     } catch {
-      statusEl.textContent = 'Bağlantı Kesildi';
+      statusEl.textContent = 'Disconnected';
       statusEl.className = 'status offline';
     }
   }
@@ -646,20 +653,20 @@
     switch (status.phase) {
       case 'download': {
         const pct = status.progress !== undefined ? Math.round(status.progress * 100) : 0;
-        statusEl.textContent = `İndiriliyor ${pct}%`;
+        statusEl.textContent = `Downloading ${pct}%`;
         statusEl.className = 'status loading';
         // Update the welcome message with download progress
         const welcomeMsg = chat.querySelector('.message.agent');
         if (welcomeMsg && !welcomeMsg.dataset.replaced) {
-          welcomeMsg.innerHTML = `<strong>⏳ Model İndiriliyor...</strong><br>` +
-            `Yapay zekâ modeli ilk kez indiriliyor. Bu işlem yalnızca bir kez gerçekleşir.<br><br>` +
+          welcomeMsg.innerHTML = `<strong>⏳ Downloading Model...</strong><br>` +
+            `The AI model is being downloaded for the first time. This only happens once.<br><br>` +
             `<div style="background:var(--bg);border-radius:var(--radius);padding:8px 12px;margin:8px 0;">` +
             `<div style="display:flex;justify-content:space-between;margin-bottom:4px;font-size:0.85rem;">` +
-            `<span>İlerleme</span><span id="dl-pct">${pct}%</span></div>` +
+            `<span>Progress</span><span id="dl-pct">${pct}%</span></div>` +
             `<div style="background:var(--border);border-radius:4px;height:8px;overflow:hidden;">` +
             `<div id="dl-bar" style="background:var(--accent);height:100%;width:${pct}%;transition:width 0.3s;"></div>` +
             `</div></div>` +
-            `<em style="color:var(--text-muted);font-size:0.85rem;">İndirme tamamlandığında uygulama kullanıma hazır olacaktır.</em>`;
+            `<em style="color:var(--text-muted);font-size:0.85rem;">The application will be ready once the download completes.</em>`;
           welcomeMsg.dataset.replaced = 'download';
         } else if (welcomeMsg && welcomeMsg.dataset.replaced === 'download') {
           const bar = document.getElementById('dl-bar');
@@ -670,7 +677,7 @@
         break;
       }
       case 'loading':
-        statusEl.textContent = 'Model Yükleniyor...';
+        statusEl.textContent = 'Loading Model...';
         statusEl.className = 'status loading';
         break;
       case 'catalog':
@@ -681,28 +688,25 @@
         statusEl.className = 'status loading';
         break;
       case 'ready':
-        statusEl.textContent = 'Çevrimdışı Hazır';
+        statusEl.textContent = 'Offline Ready';
         statusEl.className = 'status online';
         // Always restore the welcome message when ready
         const welcomeMsgReady = chat.querySelector('.message.agent');
         if (welcomeMsgReady) {
-          welcomeMsgReady.innerHTML = `<strong>Okan Üniversitesi Mühendislik Fakültesi Staj Asistanı 🟢 Hazır</strong><br>` +
-            `Bu uygulama tamamen yerel olarak çalışır. İnternet bağlantısı gerektirmez.<br><br>` +
-            `Şunlar hakkında soru sorabilirsiniz:<ul>` +
-            `<li>Zorunlu staj süresi</li>` +
-            `<li>Staj başvuru süreci</li>` +
-            `<li>Staj sigortası</li>` +
-            `<li>Staj raporu</li>` +
-            `<li>Staj kuralları</li>` +
-            `<li>Staja başlamadan önce yapılması gerekenler</li>` +
-            `<li>Staj değerlendirme süreci</li>` +
-            `<li>Gönüllü staj</li></ul>` +
-            `<em style="color:var(--warning);">📚 Yanıtlar yalnızca yerel bilgi tabanındaki resmî staj belgelerine dayanmaktadır.</em>`;
+          welcomeMsgReady.innerHTML = `<strong>Oil Refinery Support Agent – Ready</strong><br>` +
+            `Running locally on this device. No internet connection required.<br><br>` +
+            `Ask me about:<ul>` +
+            `<li>Refinery equipment inspection and troubleshooting</li>` +
+            `<li>Pump, valve, compressor, and heat exchanger maintenance</li>` +
+            `<li>Fault diagnosis and corrective actions</li>` +
+            `<li>Pressure testing and equipment isolation</li>` +
+            `<li>PPE, emergency, and safety procedures</li></ul>` +
+            `<em style="color:var(--warning);">⚠️ Always follow your site-specific safety procedures.</em>`;
           delete welcomeMsgReady.dataset.replaced;
         }
         break;
       case 'error':
-        statusEl.textContent = 'Hata';
+        statusEl.textContent = 'Error';
         statusEl.className = 'status offline';
         break;
     }
@@ -780,7 +784,7 @@
         srcDiv.className = 'sources';
         const details = document.createElement('details');
         const summary = document.createElement('summary');
-        summary.textContent = `📚 Kaynaklar (${sources.length})`;
+        summary.textContent = `📚 Sources (${sources.length})`;
         details.appendChild(summary);
         for (const s of sources) {
           const item = document.createElement('div');
@@ -834,12 +838,7 @@
     addMessage('user', text);
     addTyping();
 
-    
-    // Send only the previous conversation turns.
-    // The current user message is passed separately as "message".
-    const previousHistory = conversationHistory.slice(-6);
-
-    // Keep the current message in local conversation history.
+    // Add to history
     conversationHistory.push({ role: 'user', content: text });
 
     try {
@@ -848,7 +847,7 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           message: text,
-          history: previousHistory,
+          history: conversationHistory.slice(-6), // Keep last 3 exchanges
           compact: compactToggle.checked
         })
       });
@@ -856,7 +855,7 @@
       removeTyping();
 
       if (!res.ok) {
-        addMessage('agent', '❌ Yerel modelle iletişim kurulamadı. Foundry Local sisteminin çalıştığından emin olun.');
+        addMessage('agent', '❌ Error communicating with local model. Check that Foundry Local is running.');
         return;
       }
 
@@ -902,7 +901,7 @@
         srcDiv.className = 'sources';
         const details = document.createElement('details');
         const summary = document.createElement('summary');
-        summary.textContent = `📚 Kaynaklar (${sources.length})`;
+        summary.textContent = `📚 Sources (${sources.length})`;
         details.appendChild(summary);
         for (const s of sources) {
           const item = document.createElement('div');
@@ -927,7 +926,7 @@
 
     } catch (err) {
       removeTyping();
-      addMessage('agent', '❌ Bağlantı hatası. Yerel sunucunun çalıştığından emin olun.');
+      addMessage('agent', '❌ Connection error. Ensure the server is running locally.');
       console.error(err);
     } finally {
       sending = false;

@@ -1,7 +1,7 @@
 /**
- * Express server – Gas Field RAG Application.
+ * Express server – Oil Refinery RAG Application.
  * Serves the web UI and provides the /api/chat endpoint.
- * Fully offline, connects to Foundry Local on dynamic port.
+ * Runs locally using Foundry Local and a local RAG knowledge base.
  */
 import express from "express";
 import path from "path";
@@ -204,7 +204,7 @@ app.get("*", (_req, res) => {
 
 // ── Start server ──
 async function start() {
-  console.log("=== Gas Field RAG – Local Support Agent ===\n");
+  console.log("=== Oil Refinery RAG – Local Technical Support Agent ===\n");
 
   // Register status callback to relay progress to connected UI clients
   engine.onStatus((status) => broadcastStatus(status));
