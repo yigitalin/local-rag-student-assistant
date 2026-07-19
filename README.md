@@ -75,7 +75,7 @@ For installation instructions, refer to the official Microsoft Foundry Local doc
 ### Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/<repository-name>.git
+git clone https://github.com/<yigitalin>/<oil-refinery-local-rag>.git
 cd <repository-name>
 ```
 
